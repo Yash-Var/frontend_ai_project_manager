@@ -37,3 +37,15 @@ async (
         `/api/projects/${projectId}/auto-assign`
     );
 };
+export const getProject =
+async (
+    projectId:string
+) => {
+
+    const response =
+        await api.get(
+            `/api/projects/${projectId}`
+        );
+
+    return response.data;
+};

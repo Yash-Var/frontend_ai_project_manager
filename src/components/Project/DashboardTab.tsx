@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import DashboardCard from "./DashboardCard";
-
+import AIHealthCard from "./AIHealthCard";
 import {
     getDashboard
 } from "../../services/dashboardService";
+import TeamWorkloadCard
+from "./TeamWorkloadCard";
 
 export default function DashboardTab() {
 
@@ -322,7 +324,8 @@ export default function DashboardTab() {
                 </div>
 
             </div>
-
+<AIHealthCard />
+<TeamWorkloadCard />
         </div>
     );
 }

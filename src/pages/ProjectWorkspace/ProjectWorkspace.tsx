@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 import MainLayout
 from "../../layouts/MainLayout";
@@ -11,11 +10,14 @@ import SprintTab from "../../components/Project/SprintTab";
 import DashboardTab from "../../components/Project/DashboardTab";
 import KanbanTab
 from "../../components/Project/KanbanTab";
+import ProjectHeader from "../../components/Project/ProjectHeader";
+import AIStandupTab
+from "../../components/Project/AIStandupTab";
+import AIChatTab
+from "../../components/Project/AIChatTab";
 
 export default function ProjectWorkspace() {
 
-    const { projectId } =
-        useParams();
     
     const [activeTab,setActiveTab] =
     useState("dashboard");
@@ -35,7 +37,7 @@ export default function ProjectWorkspace() {
                 >
                     Project Workspace
                 </h1>
-
+<ProjectHeader />
                 <div
                     className="
                     flex
@@ -162,6 +164,59 @@ setActiveTab(
 >
 Kanban
 </button>
+<button
+
+className={`
+px-4
+py-2
+rounded-lg
+${
+activeTab==="standup"
+?
+
+"bg-blue-600 text-white"
+
+:
+
+"bg-gray-100"
+}
+
+`}
+
+onClick={()=>
+
+setActiveTab(
+
+"standup"
+
+)
+
+}
+
+>
+
+AI Standup
+
+</button>
+<button
+className={`
+px-4
+py-2
+rounded-lg
+${
+activeTab==="chat"
+?
+"bg-blue-600 text-white"
+:
+"bg-gray-100"
+}
+`}
+onClick={()=>
+setActiveTab("chat")
+}
+>
+AI Chat
+</button>
                 </div>
 
                 <div
@@ -213,7 +268,19 @@ Kanban
 activeTab==="kanban" &&
 <KanbanTab />
 }
+{
+activeTab==="standup"
 
+&&
+
+<AIStandupTab/>
+
+}
+{
+activeTab==="chat"
+&&
+<AIChatTab/>
+}
                 </div>
 
             </div>

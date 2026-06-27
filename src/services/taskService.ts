@@ -42,3 +42,28 @@ async (
 
     return response.data;
 };
+export const getTaskDetails =
+async (
+    taskId: string
+) => {
+
+    const response =
+        await api.get(
+            `/api/tasks/${taskId}`
+        );
+
+    return response.data;
+};
+
+export const getTaskActivity =
+async (
+    taskId: string
+) => {
+
+    const response =
+        await api.get(
+            `/api/tasks/task/${taskId}`
+        );
+
+    return response.data;
+};

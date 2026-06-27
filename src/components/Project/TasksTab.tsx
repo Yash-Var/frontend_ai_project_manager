@@ -9,8 +9,19 @@ import {
     getProjectTasks
 }
 from "../../services/taskService";
+import { useState } from "react";
+import TaskDrawer from "./TaskDrawer";
 
 export default function TasksTab() {
+    const [
+
+selectedTask,
+
+setSelectedTask
+
+]=useState<
+string | null
+>(null);
 
     const { projectId } =
         useParams();
@@ -111,9 +122,20 @@ export default function TasksTab() {
 
                         <tr
                             key={task.id}
-                            className="
-                            border-b
-                            "
+                            
+                            onClick={()=>
+
+setSelectedTask(
+task.id
+)
+
+}
+
+className="
+cursor-pointer
+hover:bg-gray-100
+ border-b
+"
                         >
 
                             <td className="p-4">
@@ -154,7 +176,25 @@ export default function TasksTab() {
                 </table>
 
             </div>
+{
 
+selectedTask &&
+
+<TaskDrawer
+
+taskId={selectedTask}
+
+onClose={()=>
+
+setSelectedTask(
+null
+)
+
+}
+
+/>
+
+}
         </div>
     );
 }
